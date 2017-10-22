@@ -44,8 +44,10 @@ def geolocation():
 		print((elemento["account"], elemento["location"],location.latitude, location.longitude))
 
 	
+	#variable = "asd,ewq"
+	#return jsonify(result= variable)
+	return jsonify(result= str(user) + str("/") + str(location.longitude) + str("/") + str(location.latitude))
 
-	return jsonify(result= str(location) + str(" / ") + str(location.longitude) + str(" / ") + str(location.latitude))
 
 @app.route('/')
 def index():
