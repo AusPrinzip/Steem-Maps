@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{{
+  url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
+
+
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+
+<script type=text/javascript>
+
+
+  $(function() {
+
+    $('a#calculate')
+      .bind('click', function() {
+        $.getJSON($SCRIPT_ROOT + '/geolocation', {
+          user: $('input[name="user"]').val()
+          
+        } , function(data) {
+          $("#result").text(data.result);
+          var coord = data.result.split("/");
+
+          //myLatLng.lat = coord[0];
+          //myLatLng.lng = coord[1];
+
+          var myLatlng = new google.maps.LatLng(coord[2],coord[1]);
+          var mapOptions = {
+            zoom: 4,
+            center: myLatlng
+          }
+          var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+          var marker = new google.maps.Marker({
+              position: myLatlng,
+              title:coord[0]
+          });
+
+          // To add the marker to the map, call setMap();
+          marker.setMap(map);
+          
+          //var myLatLng = {lat: coord[0], lng: coord[1]};
+          //alert(JSON.stringify(myLatLng));
+        });
+       
+        return false;
+        
+      });
+
+
+
+
+  });
+
+
+</script>
+<h1>Steem Map Prototype</h1>
+<p><input type=text size=5 name=user> 
+   
+   <span id=result>?</span>
+<p><a href=# id=calculate>calculate server side</a>
+
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple markers</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key= AIzaSyDNZcTMdRNmtXSL_cLJH0u2L3ZMl8e5cns &callback=initMap">
+    </script>
+  </body>
+</html>
+
+
