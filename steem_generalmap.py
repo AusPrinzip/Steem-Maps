@@ -19,28 +19,32 @@ def geolocation():
 
 	data = s.Accounts.aggregate(
 	[
-	{
-	   "$match": {
-	            "name": user
-	        }
-	    },
+{
+   "$match": {
+            "profile.location": {"$exists": "true"},
+            "last_account_update": {"$gte": myDatetime}
+        }
+    },
 
 
-	    { 
-	    "$project":
-	    {
-	        "account":"$account",
-	        "location":"$profile.location",
-	        "_id":0
-	    }},
-	    {"$limit":1},
+    { 
+    "$project":
+    {
+        "account":"$account",
+        "location":"$profile.location",
+        "_id":0
+    }},
+    {"$limit":30},
 	])
 
-	for elemento in data:
-
-		location = geolocator.geocode(elemento["location"])
-
-		print((elemento["account"], elemento["location"],location.latitude, location.longitude))
+for elemento in data:
+    # print(elemento["location"])
+    location = geolocator.geocode(elemento["location"])
+    if hasattr(location,'latitude'):
+    # elemento["location"] = location
+        print((elemento["account"], location,location.latitude, location.longitude))
+    else:
+        print("no lat/lng attribute")
 
 
 	return jsonify(result= str(user) + str("/") + str(location.longitude) + str("/") + str(location.latitude))
