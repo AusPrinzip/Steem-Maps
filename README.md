@@ -2,59 +2,45 @@
 
 This project aims to improve geographic awareness among Steem users. By improving geographical visibility of users neighboorhoods, more meetups ands gatherings will take place.
 
+An area distance filter will be implemented. 
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Please note that an Google Map API Key is not mandatory, since we are using external geolocation. Warning: Exposing your API key might be exploitable.
+
+Pip pymongo:
 
 ```
-Give examples
+python -m pip install pymongo
 ```
+
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
+Geopy
 
 ```
-Give the example
+pip install geopy
 ```
 
-And repeat
 
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+Currently testing manually with index_simplemap.html. (Check videoblog for more info)[https://www.youtube.com/watch?v=08cHmM8UssQ]
 
 ### Break down into end to end tests
 
-Explain what these tests test and why
+POST html method test and backend geolocation (Use steem_simplemap.py) like explained in the videoblog.
 
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+tbd
 
 ## Built With
 
@@ -63,6 +49,8 @@ Add additional notes about how to deploy this on a live system
 * [Pymongo](https://api.mongodb.com/python/current/) - MongoDB python library
 * [Geopy](https://github.com/geopy/geopy) - Geolocator module for python
 * [MongoDB](https://docs.mongodb.com/) - NoSQL Database
+* [Markerclusterer](https://github.com/googlemaps/js-marker-clusterer) - Google Map API JS library for Markers clustering
+
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
