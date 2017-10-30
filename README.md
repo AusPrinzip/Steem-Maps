@@ -73,7 +73,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Daniel Martinez** - *Initial work* - [lightproject](https://steemit.com/@lightproject/transfers)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
@@ -83,8 +83,8 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* @Furion thanks a lot for the great Steemdata resource
+* @Gargon Appreciate your creativity, thanks for your contributions improving user searches
+
 
 
